@@ -1,0 +1,83 @@
+<script>
+window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+        t._e.push(f);
+    };
+
+    return t;
+}(document, "script", "twitter-wjs"));
+</script>
+<div class="modal-header">
+    <div class="center">
+        <img ng-src="//d44k5f1zplbpz.cloudfront.net/staticImages/v2/logo_galaxy_of_love.png" height="50px">
+    </div>
+</div>
+<div class="resultContent">
+    <div class="center">
+        <!-- <span style="display:block">{{msg}}</span> -->
+        <h1 ng-if="!err" style="font-size:46px;font-family:'Cormorant Garamond', serif;">Congratulations</h1>
+        <h1 ng-if="errHeading" style="font-size:42px;font-family:'Cormorant Garamond', serif;">Ooops!!</h1>
+        <span style="display:block;margin-bottom:30px;margin-left:20px;margin-right:20px;font-size:16px" ng-if="!err">Thank you {{username}}, for expressing your love and creating<br><strong>'{{name | lowercase}}'</strong> in the Galaxy of Love. Your star is shining brightly.</span>
+        <span style="font-size:14px;" ng-if="!err">You can reach your star at : <strong style="color:#ed4036"><a href="/star/{{name | lowercase}}" target="_blank">https://www.galaxylove.co/star/{{name | lowercase}}</a></strong></span>
+        <span style="display:block;margin-bottom:30px;font-size:16px" ng-if="err">{{msg}}</span>
+    </div>
+    <div class="center">
+        <div style="font-size:12px;font-weight:400;;margin:35px auto 10px auto;width:265px" ng-if="!err">
+            <!--  <i class="fa fa-external-link-square" aria-hidden="true"></i><span style="display:inline-block;text-decoration:underline;color:#2c3e50;font-size:12px;cursor:pointer;margin-top:5px;margin-left:5px"><strong><a target="_blank" href="{{shortUrl}}" style='margin-top:3px'>{{shortUrl}}</a></strong></span> -->
+            <div style="float:left;margin-top:8px;margin-right:10px">Spread love, let the world know : </div>
+            <!-- <i class="fa fa-facebook-square" aria-hidden="true" style="font-size:32px;color:#3b5998"></i>
+         <i class="fa fa-twitter-square" aria-hidden="true" style="font-size:32px;color:#1dcaff"></i> -->
+            <div style="float:left"> <img src="//d44k5f1zplbpz.cloudfront.net/staticImages/fb-share.png" ng-click="share.fb()" style="margin-right:5px;cursor:pointer;">
+                <a href="{{share.twitterUrl}}" target="_blank"><img src="//d44k5f1zplbpz.cloudfront.net/staticImages/tw-tweet.png" style="display:inline-block"></a>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <div class='spinner result' ng-if="resultWaiting" style="margin-bottom:30px">
+        <div class='double-bounce1 result'></div>
+        <div class='double-bounce2 result'></div>
+    </div>
+</div>
+<div ng-if="!err">
+    <form name="forms.emailShareForm">
+        <div class="center">
+            <div class="heartIcon" style="margin-top:-30px;"><i class="fa fa-heart red3" aria-hidden="true">
+            </i> </div>
+        </div>
+        <div style="margin:-20px 25px 40px 25px">
+            <div class="row email">
+                <div class="center" style="margin-bottom:20px">Share the star with 'that' someone special.</div>
+                <div class="center">
+                    <div style="width:100%;float:left">
+                        <input type='email' name="email" id="email" placeholder="Email to share with" class="textInput emailShare" ng-model="model.email" required>
+                    </div>
+                </div>
+                <span style="margin-left:73px;position:absolute;margin-top:32px" ng-if="(forms.emailShareForm.email.$error.required || forms.emailShareForm.email.$error.email) && forms.emailShareForm.email.$dirty">A valid Email is Required</span>
+                <span style="margin-left:187px;position:absolute;margin-top:42px;font-size:13px" ng-if="!model.sendingEmail"><strong>{{model.emailMsg}}</strong></span>
+                <!-- <span style="margin-left:180px;position:absolute;margin-top:42px;font-size:13px"><strong>The star has been shared</strong></span> -->
+                <!-- <span style="margin-left:73px;position:absolute;margin-top:32px" ng-if="errors.length != 0">A Valid Email is Required</span> -->
+            </div>
+        </div>
+        <div class='spinner result' style="margin-top:-32px;position:absolute;margin-left:286px;width:25px;height:25px" ng-if="model.sendingEmail">
+            <div class='double-bounce1 result'></div>
+            <div class='double-bounce2 result'></div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer" ng-if="!resultWaiting">
+    <div class="center">
+        <button ng-click="close()" class="close result" ng-if="err">{{buttonMsg}}</button>
+        <button ng-click="sendEmails()" class="cropUpload" ng-if="!err" ng-disabled="forms.emailShareForm.email.$error.required || forms.emailShareForm.email.$error.email || model.sendingEmail">Share</button>
+        <button ng-click="close()" class="close" ng-if="!err" ng-disabled="model.sendingEmail">{{model.laterLabel}}</button>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    </div>
+</div>

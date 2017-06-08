@@ -1,0 +1,21 @@
+
+<div class="modal-header">
+    <div class="center">
+        <img ng-src="//d44k5f1zplbpz.cloudfront.net/staticImages/v2/logo_galaxy_of_love.png" height="50px">
+    </div>
+</div>
+<div class="resultContent">
+    <div class="center">
+         <h1 ng-if="heading" style="font-size:48px;font-family:'Cormorant Garamond', serif;">Ooops!!</h1>
+        <span style="display:block;margin-top:10px;margin-bottom:10px" >{{msg}}</span>
+    </div>
+    <div class='spinner result' ng-if="resultWaiting">
+        <div class='double-bounce1 result'></div>
+        <div class='double-bounce2 result'></div>
+    </div>
+</div>
+<div class="modal-footer" ng-if="!resultWaiting">
+    <div class="center">
+        <button ng-click="close()" class="close result" >{{buttonMsg}}</button>
+    </div>
+</div>

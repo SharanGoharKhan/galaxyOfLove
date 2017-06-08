@@ -1,0 +1,69 @@
+<script>
+window.twttr = (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+        t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function(f) {
+        t._e.push(f);
+    };
+
+    return t;
+}(document, "script", "twitter-wjs"));
+</script>
+
+<div ng-if="!enabled" style="position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: black;
+    z-index: 10;">
+</div>
+<div class="middle">
+    <div class="space starPage">
+        <div class="center">
+            <!--  <a href="https://mail.google.com/mail/u/0/?view=cm&su=Galaxy+of+Love&to&body=https://shar.es/18zgU8%0D%0A%0D%0AThis+message+was+sent+using+ShareThis+(http://www.sharethis.com)&fs=1&tf=1" target="_blank">Share This</a> -->
+            <div class="starImageContainer">
+                <img ng-src="{{starPageController.starData.starImage}}">
+            </div>
+            <div class="starNameContainer">
+                {{starPageController.starData.name | capitalize}}
+            </div>
+            <!--  <div class="line hundred"></div> -->
+            <div class="starMessageContainer">
+                <div class="sharingIcons" style="margin-left:520px;margin-top:-90px;position:absolute;color:white;cursor:pointer">
+                    <img src="//d44k5f1zplbpz.cloudfront.net/staticImages/fb-share.png" ng-click="starPageController.share('fb')" style="margin-right:5px">
+                    <a href="{{starPageController.twitterUrl}}" target="_blank"><img src="//d44k5f1zplbpz.cloudfront.net/staticImages/tw-tweet.png"></a>
+                </div>
+                <div class="heartIcon"><i class="fa fa-heart red noborder" aria-hidden="true">
+            </i> </div>
+                <div style="margin-top:30px"><span style="font-weight:600;margin-top:-5px; font-family:'Cormorant Garamond', serif; font-size:24px">{{starPageController.starData.dateString}}</span>
+                </div>
+                <p>{{starPageController.starData.message}}</p>
+            </div>
+            <span style="color:#efefef;font-size:14px font-family">- With love</span>
+            <div class="fromImage">
+                <img src="//d44k5f1zplbpz.cloudfront.net/staticImages/background-loader1.gif" ng-src="{{starPageController.starData.user.pictureUrl}}">
+            </div>
+            <div class="fromName">
+                {{starPageController.starData.user.name | capitalize}}
+            </div>
+            <div class="line hundred"></div>
+            <div class="msgPicContainer">
+                <ul>
+                    <li ng-repeat="pic in starPageController.starData.messagePics">
+                        <a ng-click="starPageController.openLightboxModal($index)"><img src="//d44k5f1zplbpz.cloudfront.net/staticImages/background-loader1.gif" ng-src="{{pic.thumbnail}}" class="starImage messagePics starPagePics" style="width:100px;height:100px"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="memories" ng-if="starPageController.starData.messagePics.length > 0">Memories</div>
+        </div>
+    </div>
+</div>
+</div>

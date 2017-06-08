@@ -1,0 +1,15 @@
+{
+  "name": "galaxyoflove",
+  "version": "1.0.0",
+  "description": "Its all about Love",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Partinder Pal Singh",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^15.0.2",
+    "inert": "^4.2.0"
+  }
+}

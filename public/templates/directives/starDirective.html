@@ -1,0 +1,21 @@
+<div  ng-if='starData.background.flare' class="starbackground"
+ style="top: {{ starData.top - starData.background.top }}px; 
+ left: {{ starData.left - starData.background.left }}px;
+ background-image: url({{starData.background.flareUrl}}); 
+ width : {{starData.background.width}}px;
+ height: {{starData.background.width}}px;
+ ">
+   
+</div>
+ <a id="{{starData.name}}" uib-popover-template="starData.template" popover-trigger="'mouseenter'" popover-placement="auto right" popover-enable="true" href="/star/{{starData.name}}" style="top: {{ starData.top }}px; 
+ left: {{ starData.left }}px; 
+ width: {{starData.width}}px;
+ height:{{starData.width}}px;
+ -moz-border-radius: {{starData.width}}px;
+ -webkit-border-radius: {{starData.width}}px;
+ border-radius: {{starData.width}}px;
+ cursor:pointer;
+ background-color: {{starData.background.color}};
+ z-index:8001" class="star"
+ ng-class="{nobackground : starData.name === 'sartaaj'}">
+    </a>

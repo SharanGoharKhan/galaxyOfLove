@@ -1,0 +1,62 @@
+<div class="middle">
+    <div class="space starPage">
+        <div class="center">
+            <!--  <a href="https://mail.google.com/mail/u/0/?view=cm&su=Galaxy+of+Love&to&body=https://shar.es/18zgU8%0D%0A%0D%0AThis+message+was+sent+using+ShareThis+(//www.sharethis.com)&fs=1&tf=1" target="_blank">Share This</a> -->
+            <div class="starNameContainer" style="margin-top:100px; margin-bottom:60px">
+                Contact
+            </div>
+            <!--  <div class="line hundred"></div> -->
+        </div>
+        <div class="halfColumn">
+            <div class="center">
+                <div class="halfColumnContainer">
+                    <h2>Getting in touch is easy</h2>
+                    <br> #4, Level 8
+                    <br> Millennium Towers
+                    <br> Sector 47
+                    <br> Gurugram, India
+                    <br>
+                    <br><i class="fa fa-envelope" aria-hidden="true"></i> : <a href="mailto:hi@galaxyoflove.co" style="cursor:pointer">hi@galaxyoflove.co</a>
+                    <div class="line half" style="margin-top:35px;margin-bottom:30px"></div>
+                    <span style="font-size:18px;font-weight:600;">Partinder Singh</span>
+                    <div style="margin-top:10px;line-height:20px">Founder, Galaxy of Love
+                        <br>
+                        <br><i class="fa fa-phone" aria-hidden="true"></i> : +91 9873756056
+                        <br><i class="fa fa-envelope" aria-hidden="true"></i> : <a href="mailto:partinder@galaxyoflove.co">partinder@galaxyoflove.co</a>
+                        <br>
+                        <br>
+                        <a href="//in.linkedin.com/in/partinder" target="_blank" class="socialContact"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                        <a href="http://www.startupandsons.com" target="_blank" class="socialContact"><i class="fa fa-wordpress" aria-hidden="true"></i></a>
+                        <a href="https://twitter.com/partinder" target="_blank" class="socialContact"><i class="fa fa-twitter " aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="halfColumn">
+            <div class="center">
+                <div class="halfColumnContainer right">
+                    <form name="forms.contactForm">
+                        <input class="textInput contact" type="text" placeholder="Your Name" ng-model="model.name" name="name" required/>
+                        <span style="position:absolute;font-size:10px;margin-top:-20px;margin-left:2px;" ng-if="forms.contactForm.name.$invalid && forms.contactForm.name.$dirty">Need a name</span>
+
+                        <input class="textInput contact" type="email" placeholder="Your Email" ng-model="model.email" name="email" required/>
+                        <span style="position:absolute;font-size:10px;margin-top:-20px;margin-left:2px" name="email" ng-if="forms.contactForm.email.$invalid && forms.contactForm.email.$dirty ">Need a valid email</span>
+
+                        <textarea class="textInput contact long" placeholder="Ask me anything" ng-model="model.query" name="query"required/>
+                        <span style="position:absolute;font-size:10px;margin-top:-20px;margin-left:2px" ng-if="forms.contactForm.query.$invalid && forms.contactForm.query.$dirty">Ask something</span>
+                    </form>
+                    <button type="button" class="contactButton" ng-click="submit()" ng-disabled="forms.contactForm.$invalid || sendingQuery"> Get in Touch
+                    </button>
+                    <div class='spinner inline' style="margin:-30px 0 0 320px;color:#1abc9c" ng-if="sendingQuery">
+                        <div class='double-bounce1' style="background-color:#1abc9c"></div>
+                        <div class='double-bounce2' style="background-color:#1abc9c">
+                        </div>
+                    </div>
+                    <div class="center" style="margin-top:10px;margin-left:10px" ng-if="forms.contactForm.$pristine">{{msg}}</div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,41 @@
+{
+  "name": "galaxy-of-love",
+  "description": "Spreading Love, one star at a time",
+  "main": "app.js",
+  "authors": [
+    "Partinder Pal Singh"
+  ],
+  "license": "Partinder Pal Singh",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "^2.1.4",
+    "angular-facebook": "^0.2.3",
+    "angular-loading-bar": "^0.9.0",
+    "angular-route": "^1.5.9",
+    "angular-typeahead": "^1.0.2",
+    "jquery": "^3.1.0",
+    "ng-file-upload": "^12.2.12",
+    "ng-img-crop": "ngImgCrop#^0.3.2",
+    "please-wait": "^0.0.5",
+    "angular": "1.6.4",
+    "typeahead.js": "^0.11.1",
+    "angular-recaptcha": "^3.2.1",
+    "angulartics-google-analytics": "^0.4.0",
+    "angulartics-mixpanel": "^0.1.3",
+    "angular-filter": "^0.5.16",
+    "ng-cookies": "^1.1.1",
+    "angular-cookies": "^1.6.4"
+  },
+  "resolutions": {
+    "angular": "1.6.4",
+    "angular-bootstrap": "^2.1.4"
+  }
+}

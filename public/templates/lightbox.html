@@ -1,0 +1,20 @@
+<div class="lightbox-nav">
+    <!-- close button -->
+    <!-- <button class="close" aria-hidden="true" ng-click="$dismiss()">×</button> -->
+    <div class="btn-group" ng-if="Lightbox.images.length > 1">
+        <a class="btn btn-xs btn-default" ng-click="Lightbox.prevImage()" style="margin-right:20px">
+        ‹ Previous
+      </a>
+        <a class="btn btn-xs btn-default" ng-click="Lightbox.nextImage()">
+        Next ›
+      </a>
+    </div>
+</div>
+<div class="closeModal" ng-click="Lightbox.closeModal()">Close</div>
+<div class="modal-body" ng-swipe-left="Lightbox.nextImage()" ng-swipe-right="Lightbox.prevImage()" style="padding:0px;padding-top:3px">
+    <!-- navigation -->
+    <div class="lightbox-image-container" style="display: block;background-image:url('//d44k5f1zplbpz.cloudfront.net/staticImages/loader.gif'); min-height:150px;min-width:150px; background-repeat: no-repeat;background-position: center;">
+        <img ng-if="!Lightbox.isVideo(Lightbox.image)" lightbox-src="{{Lightbox.imageUrl}}" style="border-radius:6px">
+        <!-- video -->
+    </div>
+</div>

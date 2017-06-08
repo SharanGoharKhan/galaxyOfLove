@@ -1,0 +1,245 @@
+<script src="//www.google.com/recaptcha/api.js?render=explicit&onload=vcRecaptchaApiLoaded" async defer></script>
+<div class="createStar-container" uploader="uploader">
+    <div class="nameStar">
+        <div class="leftColumn">
+            <form name="forms.starForm">
+                <h1>Name the Star after <strong>that</strong> someone special in your life - </h1>
+                <div class="line"></div>
+                <div class="section">
+                    <div class="row">
+                        <div class="leftSection">
+                            Star Name :
+                        </div>
+                        <div class="rightSection" style="margin-top:3px">
+                            www.galaxyoflove.com/star/
+                            <input class="textInput starName" ng-model="starName" ng-model-options="{ debounce: 500 }" id="starName" name="starName" ng-minlength="3" ng-maxlength="15" required />
+                            <div class='spinner inline' ng-show="starNameWaiting">
+                                <div class='double-bounce1'></div>
+                                <div class='double-bounce2'>
+                                </div>
+                            </div>
+                            <span class="validation-msg starName" ng-show="forms.starForm.starName.$error.minlength" ng-show="starNameWaiting">Minimum 3 Characters</span>
+                            <span class="validation-msg starName" ng-show="forms.starForm.starName.$error.maxlength" ng-show="starNameWaiting">Maximum 15 Characters</span>
+                            <span class="validation-msg starName" ng-show="!forms.starForm.starName.$error.maxlength && !forms.starForm.starName.$error.minlength">{{starNameMsg}}</span>
+                        </div>
+                    </div>
+                    <div style="clear:both">
+                    </div>
+                    <div class="row">
+                        <div class="leftSection">
+                            Star Picture :
+                        </div>
+                        <div class="rightSection">
+                            <!-- <div class="center">
+
+                            </div> -->
+                            <div style="border: 1px solid white;
+                            width:150px;
+                            height:150px;
+                        border-radius: 5px;
+                        margin-left: 145px;
+                        margin-bottom: 5px;
+                        margin-top:5px;
+                        background-image:url('//d44k5f1zplbpz.cloudfront.net/staticImages/background-loader1.gif'); background-position: center;">
+                                <img ng-src="{{selectedStar.croppedImage}}" width="150px" class="starImage" style="cursor: pointer" ng-click="openImageSelector()" />
+                            </div>
+                            <button type="button" ng-click="openImageSelector()" class="changeImageButton show">Change Star Picture</button>
+                        </div>
+                    </div>
+                    <div style="clear:both">
+                    </div>
+                </div>
+                <h1>Your <strong>special</strong> message -</h1>
+                <div class="line">
+                </div>
+                <div class="section">
+                    <!-- Star Name -->
+                    <!-- Star Name error -->
+                    <!-- <div class="row">
+                        <div class="leftSection"></div>
+                        <div class="rightSection">
+                        </div>
+                    </div>
+                    <div style="clear:both">
+                    </div> -->
+                    <!-- Star Message -->
+                    <div class="row">
+                        <div class="leftSection">
+                            Your Message :
+                        </div>
+                        <div class "rightSection">
+                            <textarea class="textInput longMessage" placeholder="Write your heart out, once posted this message cannot be changed." ng-model="starMessage" id="starMessage" name="starMessage" ng-trim="false" required/>
+                        </div>
+                    </div>
+                    <div style="clear:both">
+                    </div>
+                    <!-- Message Pictures -->
+                    <div class="row">
+                        <div class="leftSection">
+                            Message Pictures :
+                        </div>
+                        <div class="rightSection">
+                            <div style="width:450px">
+                                <div class="center">
+                                    <div class="messagePictures">
+                                        <ul>
+                                            <li ng-repeat="pic in selectedStar.messagePics track by $index">
+                                                <img src="public/images/loader.gif" ng-src="{{pic.thumbnail}}" width="90px" height="90px" class="starImage messagePics">
+                                                <img src="//d44k5f1zplbpz.cloudfront.net/staticImages/cross.png" class="cross" ng-click="removeImage($index)">
+                                            </li>
+                                            <li ng-if="addImageShow()">
+                                                <img ng-src="//d44k5f1zplbpz.cloudfront.net/staticImages/messagePicPlaceholder.png" width="90px" class="starImage messagePics last" style="cursor: pointer" ng-click="openImageSelectorMsgPics($index)">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both">
+                    </div>
+                </div>
+                <div class="line">
+                </div>
+                <div class="section">
+                    <div class="row">
+                        <div class="leftSection">
+                            About You :
+                        </div>
+                        <div class="rightSection">
+                            <div style="width:450px">
+                                <div class="center">
+                                    <div ng-if="!fbLoginStatus">
+                                        <img src="//d44k5f1zplbpz.cloudfront.net/staticImages/fbLogin.png" ng-click="fbLogin()" width="200" class="fbLoginButton" ng-if="!fbLoginStatus">
+                                        <div>
+                                            <div class="line ten"></div>
+                                            <div class="orLineSpan">or</div>
+                                            <div class="line ten"></div>
+                                        </div>
+                                    </div>
+                                    <img ng-src="{{selectedStar.profileImagePlaceholder}}" width="80" class="profileImage" ng-click="openProfilePicSelector()" ng-style="fbLoginStatus ? {'margin-top':'0px'} : {}"/>
+                                    <div style="width:400px;">
+                                        <button type="button" class="changeImageButton show" ng-click="openProfilePicSelector()">Change Your Picture</button>
+                                    </div>
+                                    <input type="text" class="textInput userName" ng-model="selectedStar.user.name" id="userName" name="userName" placeholder="Name" required/>
+                                    <input type="email" class="textInput userName" ng-model="selectedStar.user.email" id="userEmail" name="userEmail" placeholder="Email" ng-change="emailChange()" required/>
+                                    <input type="email" class="textInput userName" ng-model="confirm.email" placeholder="Confirm Email" ng-show="!fbEmailId || confirmEmailStatus" />
+                                    <!-- <div ng-show="fbLoginStatus" class="userName">{{fbProfileName}}</div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both">
+                    </div>
+                </div>
+                <div class="line">
+                </div>
+                <div class="section">
+                    <div class="row">
+                        <div class="leftSection">
+                            Payment :
+                        </div>
+                        <div class="rightSection">
+                            <div style="width: 450px;margin-top:10px">
+                                <div class="paymentRow">
+                                    <div class="paymentLeft">
+                                        <strong>{{selectedStar.starPrice.starSize}}</strong> star
+                                    </div>
+                                    <div class="paymentRight">{{starPriceLabel}}</div>
+                                </div>
+                                <div class="paymentRow last">
+                                    <div class="paymentLeft">
+                                        <input type="text" class="textInputCoupon" placeholder="Coupon Code" ng-model="coupon" id="coupon"> <a href on-click="validateCoupon()" style="font-size:14px;margin:0px;" ng-click="validateCoupon()">Apply</a>
+                                        <div class='spinner coupon' ng-if="couponWaiting">
+                                            <div class='double-bounce1'></div>
+                                            <div class='double-bounce2'>
+                                            </div>
+                                        </div>
+                                        <span style='font-size:11px;color:white;margin-top:7px;margin-left:40px;font-weight:300;display:inline-block'>
+                                                {{couponValidationMsg}}
+                                            </span>
+                                    </div>
+                                    <div class="paymentRight">{{couponAmount}}
+                                    </div>
+                                </div>
+                                <div class="paymentRow final">
+                                    <div class="paymentLeft">
+                                        Total
+                                    </div>
+                                    <div class="paymentRight final">{{revisedAmount}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both">
+                    </div>
+                </div>
+                <div class="line">
+                </div>
+                <div class="section">
+                    <div class="row">
+                        <div style="margin-left:225px">
+                            <div vc-recaptcha theme="'light'" key="model.key" on-create="setWidgetId(widgetId)" on-success="setResponse(response)" on-expire="cbExpiration()" style="margin: 0px auto"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="line">
+                </div> -->
+                <div style="font-size:14px;color:#efefef;margin-right:40px;margin-top:40px;text-align:center">By naming a star in the Galaxy of Love you accept our <a href="/terms">Terms of service</a> and <a href="/privacy">Privacy policy</a> unconditionally.</div>
+                <div class="center">
+                    <button type="button" class="changeImageButton show create" ng-click="createStar()"> Name the Star
+                    </button>
+                </div>
+                <div class="section" ng-show="anyErrors()">
+                    <div class="row" style="margin:0px">
+                        <!-- Show errors -->
+                        <h3 style="color:#ed4036;font-size:20px;font-weight:600">Ooops! We need the following, I am sure it won't take much time.</h3>
+                        <div class="formErrors">
+                            <ul ng-show="anyErrors()">
+                                <li ng-repeat="error in errors">{{error}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="line" ng-show="anyErrors()"></div>
+            </form>
+        </div>
+        <div class="rightColumn">
+            <div class="center">
+                <span <span class="rightColoumnText">
+                    The small image that shows in the Popup when someone hovers over the star.
+                </span>
+                <div style="margin:10px auto 30px; height:320px;width:320px; display: block;background-image:url('//d44k5f1zplbpz.cloudfront.net/staticImages/loader.gif'); background-position: center; ">
+                    <img src="//d44k5f1zplbpz.cloudfront.net/staticImages/sartaaj-star-new.png" width="320px">
+                </div>
+            </div>
+            <div class="section">
+                <span class="rightColoumnText"> <br/><br/>
+                     "Most of us shy away from telling someone how much we love them, what they mean to us. Don’t shy way from this opportunity, open your heart and let your ‘Being’ rejoice in the celebration of life. Write it for anyone - be it your son, daughter, wife, best friend, crush. Its a small life lets make the most of it" <br/><br/> - After all, its all about Love. <i class="fa fa-heart red" aria-hidden="true"> 
+                 </i> - 
+                </span>
+                <span class="author">
+            - Founder, Galaxy of Love
+            <span>
+            </div>
+            <div class="section">
+                <div class='center'>
+                    <span <span class="rightColoumnText" style="margin-top:300px">
+                     A few pictures dedicated to your Star.<br> Check out a sample star page <a target="_blank" href="/star/sartaaj">here.</a>
+                    </span>
+                <div style="margin:10px auto 10px; display:block; width: 320px;background-image:url('//d44k5f1zplbpz.cloudfront.net/staticImages/loader.gif'); background-position: center; ">
+                    <img src="//d44k5f1zplbpz.cloudfront.net/staticImages/sartaaj-memories-new.png" width="320px">
+                </div>
+            </div>
+            <div class="section">
+                <span class="rightColoumnText" ng-style="{'margin-top': fbLoginStatus ? '60px' : '160px'}"> 
+                    <h1 style="font-family:'Cormorant Garamond', serif;color:white;font-weight:600;padding-bottom:10px;margin-left:0px">Want to post anonymously?</h1>
+                    We respect your privacy and understand your peferences. If you would like to post anonymously pleease feel free to use a <span style="color:#2c3e5d;font-weight:600">pseudo name and picture</span>, but we need a valid email to ensure we can reach you in future.<br><br>
+                    <span style="color:#2c3e5d;font-weight:600" >Please be rest assured that your personal details are confidential and never shared anywhere, ever.<span>
+                </span>
+               
+            </div>
+        </div>
+    </div>
+</div>
+</div>

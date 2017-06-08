@@ -1,0 +1,16 @@
+<div class="middle">   
+    <div class="space">
+    	<!-- <div class="searchResult" ng-show="homeController.starService.searchItem.length" style="top:{{homeController.starService.searchResult.top}}px;left:{{homeController.starService.searchResult.left}}px">&#11015;</div> -->
+
+        <div sly-repeat="star in homeController.stars">
+            <star star-data="star"></star>
+        </div>
+        <div class="gps_ring" style="
+             top: {{homeController.selectedPulse.top}}px; 
+             left: {{homeController.selectedPulse.left}}px; 
+             width: {{homeController.selectedPulse.width}}px;
+             height: {{homeController.selectedPulse.width}}px;
+             -webkit-border-radius:{{homeController.selectedPulse.radius}}px" ng-show="homeController.starService.searchItem.length">
+        </div>
+    </div>
+</div>

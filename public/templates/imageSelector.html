@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <div class="center">
+        <h2>Star Picture (PNG/JPG)</h2></div>
+</div>
+<form name="myForm">
+   <input type="file" name="file" id="file" class="inputfile" onchange="angular.element(this).scope().setFile(this)" accept="image/gif, image/jpeg, image/png" ng-model="picFile"/>
+    <label for="file">Select Picture   (PNG, JPG)</label>
+    <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+        <img-crop image="image_source" result-image="croppedDataUrl" ng-init="croppedDataUrl=''" area-type="square" result-image-size="300">
+        </img-crop>
+    </div>
+    <!-- <div>
+            <img ng-src="{{croppedDataUrl}}" />
+        </div> -->
+    <div class="modal-footer">
+        <button ng-click="upload(croppedDataUrl, picFile.name)" class="cropUpload" ng-disabled="(!picFile || uploading)" ng-class="cropUpload">Upload</button>
+        <div class='spinner inline' ng-if="uploading" style="position:absolute;margin:10px 0px 0px 160px">
+            <div class='double-bounce1 result'></div>
+            <div class='double-bounce2 result'></div>
+        </div>
+        <button ng-click="close()" class="close">Cancel</button>
+        <!-- <span class="progress" ng-show="progress >= 0"> -->
+        <!--  <div style="width:{{progress}}%" ng-bind="progress + '%'"></div> -->
+        <!--  <span ng-show="progress >= 1" class="progress">
+            {{progress}}%
+         </span> -->
+        <!-- </span> -->
+        <!-- <span ng-show="result">Upload Successful</span> -->
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    </div>
+</form>

@@ -1,0 +1,15 @@
+<div style="width: 200px; height: 390px; color:#2c3e50; background-color:#efefef">
+    <div style="height: 200px; width: 100%; display: block;background-image:url('//d44k5f1zplbpz.cloudfront.net/staticImages/background-loader1.gif');">
+        <img ng-src="{{starData.starImage}}" width="200px" height="200px" style="border-radius:5px 5px 0px 0px">
+    </div>
+    <div class="center">
+        <div class="heartIcon" style="font-size:32px;margin-top:-21px;"><i class="fa fa-heart red noborder" aria-hidden="true">
+            </i> </div>
+    </div>
+    <div style="height:40px; width: 200px; text-align:center;font-weight:500;color:#2c3e50; font-family:'Cormorant Garamond', serif; font-size:22px;letter-spacing: 0px; display:block; margin-top:-5px">
+        <!-- <img ng-src="public/images/backdrop.png" width="200px">  -->
+        <span style="display:block;margin-top">{{starData.name | uppercase}}</span>
+    </div>
+    <div class="line" style="width: 100px; border-color:#2c3e50; margin:0px auto; margin-top: -6px;"></div>
+    <div style="padding: 17px; font-size: 11px; height: 90px; text-overflow: ellipsis; overflow: hidden;line-height:140%; text-align:left; padding-top:10px;"><p  class="smallMessage">{{starData.smallMessage}}</p></div>
+</div>

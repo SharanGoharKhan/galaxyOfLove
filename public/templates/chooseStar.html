@@ -1,0 +1,84 @@
+<div class="createStar-container">
+    <div class="createStar">
+        <div class="rowChoose">
+            <div class="leftColumn">
+                <h1>
+                How big a star do you want to create?
+                </h1>
+                <div ng-repeat="cost in chooseStarController.costArray track by $index" class="radio-inline">
+                    <input type="radio" id="radio{{$index}}" name="radio" value="{{cost.radius}}" ng-model="chooseStarController.selectedRadius" />
+                    <label for="radio{{$index}}"><span></span>{{cost.starSize}}</label>
+                </div>
+                <div class="radio-inline price" style="line-height:20px">
+
+                    <span class="priceValue" style="float:left">{{chooseStarController.starPriceLabel}}</span>
+                    <!-- <div style="float:left;">
+                        <div class="starSizeSample" style="width:{{chooseStarController.selectedRadius}}px;height:{{chooseStarController.selectedRadius}}px;background-color:white;border-radius:10px;"></div>
+                    </div> -->
+                    <div class="priceQuestion"><a href="" ng-click="priceClick()"><i class="fa fa-question-circle priceQuestion" aria-hidden="true"></i></a></div>
+                </div>
+                <div class="line half">
+                </div>
+            </div>
+            <div class="rightColumn">
+                <span class="quote">
+            "There is no greater happiness than happiness of having your kid look into you eyes and SMILE."
+            </span>
+                <span class="author">
+            - Founder, Galaxy of Love
+            <span>
+            </div>
+
+        </div>
+        <div class="rowChoose noTop">
+         <div class="spaceBelow">
+
+                    <p align="center" style="margin:0px">
+                    Click in the space below to place your star. Try not to get too close to others.<br/><span class="arrowDown"><i class="fa fa-arrow-down fa-6 arrowDown" aria-hidden="true"></i></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="middle">
+    <div class="space chooseStar" id="chooseStarSpace" ng-click="chooseStarController.spaceClicked($event)">
+        <div class="gps_ring" style="
+             top: {{chooseStarController.selectedPulse.top}}px;
+             left: {{chooseStarController.selectedPulse.left}}px;
+             width: {{chooseStarController.selectedPulse.width}}px;
+             height: {{chooseStarController.selectedPulse.width}}px;
+             -webkit-border-radius:{{chooseStarController.selectedPulse.radius}}px" ng-show="chooseStarController.selectedStar.selected">
+        </div>
+        <div style="top: {{ chooseStarController.selectedStar.top }}px;
+                    left: {{ chooseStarController.selectedStar.left }}px;
+                    width: {{chooseStarController.selectedStar.width }}px;
+                    height:{{chooseStarController.selectedStar.width}}px;
+                    -moz-border-radius: {{chooseStarController.selectedStar.width}}px;
+                    -webkit-border-radius: {{chooseStarController.selectedStar.width}}px;
+                    border-radius: {{chooseStarController.selectedStar.width}}px;" ng-class="{
+                    'star-disabled' : chooseStarController.selectedStar.enabled,
+                    'star-available': !chooseStarController.selectedStar.enabled,
+                    'star-selected': chooseStarController.selectedStar.selected
+                    }" ng-show="chooseStarController.selectedStar.selected">
+        </div>
+        <!-- <createstar star-data="chooseStarController.selectedStar" ></createstar> -->
+        <div sly-repeat="star in chooseStarController.stars">
+            <createstar star-data="star" star-clicked="chooseStarController.spaceClicked($event)"></createstar>
+            <!-- <createstar star-data="star" index="{{$index}}"></createstar> -->
+        </div>
+    </div>
+</div>
+<div class="floating-bottom-navigation-container" ng-show="chooseStarController.selectedStar.selected">
+    <div class="floating-navigation">
+        <span>
+            <i class="fa fa-heart red" aria-hidden="true">
+            </i>  AWESOME!, Your '<strong>{{ chooseStarController.starSizeName}}</strong>' star is shining...
+        </span>
+        <button ng-click="chooseStarController.testModal()">
+            Modal
+        </button>
+        <button ng-click="chooseStarController.next()">
+            Next
+        </button>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <div class="center"><h2>Your Picture</h2></div>
+</div>
+<form name="myForm">
+    <input type="file" name="file" id="file" class="inputfile" onchange="angular.element(this).scope().setFile(this)" accept="image/gif, image/jpeg, image/png" ng-model="picFile"/>
+    <label for="file">Select Picture   (PNG, JPG)</label>
+    <div ngf-drop ng-model="picFile" ngf-pattern="image/*" class="cropArea">
+        <img-crop image="image_source" result-image="croppedDataUrlProfile" ng-init="croppedDataUrlProfile=''" area-type="circle" result-image-size="300">
+        </img-crop>
+    </div>
+    <!-- <div>
+            <img ng-src="{{croppedDataUrl}}" />
+        </div> -->
+    <div class="modal-footer">
+        <button ng-click="upload(croppedDataUrlProfile, picFile.name)" class="cropUpload" ng-disabled="!picFile || uploading">Upload</button>
+        <div class='spinner inline' ng-if="uploading" style="position:absolute;margin:10px 0px 0px 160px">
+            <div class='double-bounce1 result'></div>
+            <div class='double-bounce2 result'></div>
+        </div>
+        <button ng-click="close()" class="close" ng-disabled="progress < 100">Cancel</button>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    </div>
+</form>

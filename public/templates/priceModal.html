@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <div class="center">
+        <img ng-src="//d44k5f1zplbpz.cloudfront.net/staticImages/v2/logo_galaxy_of_love.png" height="50px">
+    </div>
+</div>
+<div class="resultContent">
+    <div class="center">
+    	<h2 style="font-size:22px">Why pay to create a star?</h2>
+        <span style="display:block;margin-top:-20px;font-size:14px;text-align:left;line-height:22px;margin-left:20px;margin-right:20px"><br>Just like you, I too wanted to keep the Galaxy free for all, forever, but soon realized that it would be impossble for me to do so due to the high infrastructure costs for keeping it up and running for 18 years, though I wish to keep it alive for ever.<!-- Also, I wanted to ensure that the Galaxy runs with a negative Carbon footprint, hence everytime you name a star in we plant a tree on your behalf through <a href='http://www.saytrees.org/' target="_blank">Saytrees</a>, Not only plant but also name the sapling with the star name. -->
+        </span>
+    </div>
+    <div class='spinner result' ng-if="resultWaiting">
+        <div class='double-bounce1 result'></div>
+        <div class='double-bounce2 result'></div>
+    </div>
+</div>
+<div class="modal-footer" ng-if="!resultWaiting">
+    <div class="center">
+        <button ng-click="close()" class="close result">{{buttonMsg}}</button>
+    </div>
+</div>
