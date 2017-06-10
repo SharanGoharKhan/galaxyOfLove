@@ -19,7 +19,6 @@
     <meta name="twitter:description" content="Name a star in the Galaxy of love and express your love for that 'someone' special in your life. It's a small life, lets make the most of it..">
     <meta name="twitter:image" content="https://d44k5f1zplbpz.cloudfront.net/staticImages/fb-share-v3-tiny.png">
     <meta name="google-site-verification" content="Nfli_txOSkPQOdxgi6FXkX_QyDPEpJ_zR_kun2kIqKM" />
-    <!-- <link href="css/bootstrap.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="/public/bower_components/please-wait/build/please-wait.css" />
     <link rel="stylesheet" href="/public/css/style.css" />
     <link rel="stylesheet" href="/public/css/ng-img-crop.css" />
@@ -87,17 +86,20 @@
     <script type="text/javascript" src="public/bower_components/please-wait/build/please-wait.min.js"></script>
     <script type="text/javascript" src="public/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="public/js/loader.js"></script>
-    <div class="html-container">
+    <div class="html-container-deffered">
         <!-- Begin Header -->
         <div class="header-container" id="header">
-            <div class="header">
-                <div class="logoContainer">
-                    <a id="logo-nav" href="/"><img src="//d44k5f1zplbpz.cloudfront.net/staticImages/v2/logo_galaxy_of_love_header.png" height="70px"></a>
+            <div class="header-deffered container">
+                <div class="row">
+                    <div class="logoContainer-deffered col-sm-8">
+                        <a id="logo-nav" href="/"><img src="//d44k5f1zplbpz.cloudfront.net/staticImages/v2/logo_galaxy_of_love_header.png" height="70px" style="width: 80%"></a>
+                    </div>
+                     <div class="search col-sm-4">
+                            <typeahead items="items" prompt="Search for a Star" title="name" model="name" on-select="onItemSelected(star)" on-cancel="onCancel(selected)" />
+                    </div>
                 </div>
                 <div class="navigationContainer" ng-controller="navigationController">
-                    <div class="search">
-                        <typeahead items="items" prompt="Search for a Star" title="name" model="name" on-select="onItemSelected(star)" on-cancel="onCancel(selected)" />
-                    </div>
+                    
                     <div class="navigation">
                         <ul class="navigationItems">
                             <li ng-class="{active : home}">
