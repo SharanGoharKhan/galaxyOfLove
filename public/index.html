@@ -86,46 +86,97 @@
     <script type="text/javascript" src="public/bower_components/please-wait/build/please-wait.min.js"></script>
     <script type="text/javascript" src="public/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="public/js/loader.js"></script>
-    <div class="html-container-deffered">
-        <!-- Begin Header -->
-        <div class="header-container" id="header">
+    <div class="html-container" id="header">
+        <div class="container">
+            <div class="header-container row">
+                <div class="logoContainer col-sm-8">
+                    <a id="logo-nav" href="/"><img src="//d44k5f1zplbpz.cloudfront.net/staticImages/v2/logo_galaxy_of_love_header.png" height="70px"></a>
+                </div>
+                <div class="search col-sm-4">
+                     <typeahead items="items" prompt="Search for a Star" title="name" model="name" on-select="onItemSelected(star)" on-cancel="onCancel(selected)" />
+                </div>
+            </div>
+            <div class="main-navigation-container row">
+                <div class="main-navigation-col col-sm-12 col-sm-offset-7">
+                    <div class="navigationContainer" ng-controller="navigationController">
+                        <div>
+                            <ul class="navigationItems">
+                                <div class="col-sm-1">    
+                                    <li ng-class="{active : home}">
+                                        <a href="/">Galaxy</a>
+                                    </li>
+                                </div>
+                                <div class="col-sm-1">        
+                                    <li ng-class="{active : what}">
+                                        <a href="/what">What</a>
+                                    </li>
+                                </div>
+                                <div class="col-sm-1">    
+                                    <li ng-class="{active : why}">
+                                        <a href="/why">Why</a>
+                                    </li>
+                                </div>
+                                <div class="col-sm-2">    
+                                    <li ng-class="{active : createstar}">
+                                        <a href="/createstar/choose"><strong>Create a Star</strong></a>
+                                    </li>
+                                </div>    
+                            </ul>
+                        </div>
+                    </div>
+                </div>   
+            </div>  
+        </div>  
+    </div>
+    <!-- <div class="html-container-deffered">
+        <div class="header-container-defferd" id="header">
             <div class="header-deffered container">
                 <div class="row">
-                    <div class="logoContainer-deffered col-sm-8">
-                        <a id="logo-nav" href="/"><img src="//d44k5f1zplbpz.cloudfront.net/staticImages/v2/logo_galaxy_of_love_header.png" height="70px" style="width: 80%"></a>
+                    <div class="logoContainer col-sm-8">
+                        <a id="logo-nav" href="/"><img src="//d44k5f1zplbpz.cloudfront.net/staticImages/v2/logo_galaxy_of_love_header.png" height="70px"></a>
                     </div>
                      <div class="search col-sm-4">
                             <typeahead items="items" prompt="Search for a Star" title="name" model="name" on-select="onItemSelected(star)" on-cancel="onCancel(selected)" />
                     </div>
                 </div>
-                <div class="navigationContainer" ng-controller="navigationController">
-                    
-                    <div class="navigation">
-                        <ul class="navigationItems">
-                            <li ng-class="{active : home}">
-                                <a href="/">Galaxy</a>
-                            </li>
-                            <li ng-class="{active : what}">
-                                <a href="/what">What</a>
-                            </li>
-                            <li ng-class="{active : why}">
-                                <a href="/why">Why</a>
-                            </li>
-                            <li ng-class="{active : createstar}">
-                                <a href="/createstar/choose"><strong>Create a Star</strong></a>
-                            </li>
-                        </ul>
+                    <div class="row">
+                        <div class="offset-md-3 col-md-4 col-sm-4">
+                            <div class="navigationContainer" ng-controller="navigationController">
+                             <div class="navigation">
+                                <ul class="navigationItems">
+                                    <li ng-class="{active : home}">
+                                        <a href="/">Galaxy</a>
+                                    </li>
+                                    <li ng-class="{active : what}">
+                                        <a href="/what">What</a>
+                                    </li>
+                                    <li ng-class="{active : why}">
+                                        <a href="/why">Why</a>
+                                    </li>
+                                    <li ng-class="{active : createstar}">
+                                        <a href="/createstar/choose"><strong>Create a Star</strong></a>
+                                    </li>
+                                </ul>
+                        </div>
                     </div>
+                        </div>  
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Finish Header -->
         <!--  Begin Content -->
-
-        <div class="body-container" id="spaceBody">
-            <div ng-view>
+       <!--  <div class="container-fluid" style="margin-top: 8px;padding-left: 0px;padding-right: 0px">
+            <div class="row" style="margin-left: 0px;margin-right: 0px;height: 100%;padding: 0px;">
+                <div class="col-md-12" style="padding-left: 0px;padding-right: 0px;"> -->
+                    <div class="body-container" id="spaceBody">
+                        <div ng-view>
+                        </div>
+                    </div>
+             <!--    </div>   
             </div>
-        </div>
+        </div>   -->
         <!-- End Content -->
         <!-- Begin Footer -->
         <div class="footer-container">
